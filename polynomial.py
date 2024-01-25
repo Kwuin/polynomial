@@ -55,11 +55,12 @@ class Div:
     def __repr__(self):
         if isinstance(self.p1, Add) or isinstance(self.p1, Sub) or isinstance(self.p1, Div):
             return "( " + repr(self.p1) + " ) / ( " + repr(self.p2) + " )"
-        if isinstance(self.p2, Int):
+        if isinstance(self.p2, Int) or isinstance(self.p2, X):
             return repr(self.p1) + " / " + repr(self.p2)
         return repr(self.p1) + " / ( " + repr(self.p2) + " )"
 
 
 poly = Add(Add(Int(4), Int(3)), Add(X(), Mul(Int(1), Add(Mul(X(), X()), Int(1)))))
 poly2 = Div(Add(Sub(X(), Mul(Int(3), Div(X(), Int(3)))), Int(5)),X())
-print(poly2)
+poly3 = Div(Div(Int(3), X()), Div(X(), Mul(X(), Int(4))))
+print(poly3)
